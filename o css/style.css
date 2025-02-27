@@ -1,0 +1,269 @@
+/* Fundo galáxia */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(imagens/Frozen\ Hot\ Chocolate.jpg);
+    background-size: cover; /* Garantir que a imagem de fundo cubra toda a tela */
+    background-position: center;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Estilos do formulário */
+#form-container {
+    background:255,255,255,0.9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    max-width: 100%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+label {
+    font-size: 1rem;
+    color: #fff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="tel"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #7f00ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff007f;
+}
+
+/* Estilos do cardápio */
+#menu {
+    overflow-y: auto;
+    max-height: 80vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin-top: 50px;
+}
+
+/* Estilo para os itens do cardápio */
+.cardapio-item {
+    background: rgba(0, 0, 0, 0.6);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.cardapio-item h3 {
+    font-size: 1.5rem;
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.cardapio-item p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+select, .adicionais {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+.adicionais {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.adicionais label {
+    display: block;
+}
+
+.adicionar-carrinho {
+    padding: 10px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.adicionar-carrinho:hover {
+    background-color: #ff3b2e;
+}
+
+/* Estilo do carrinho */
+#carrinho {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#itens-carrinho {
+    list-style: none;
+    padding: 0;
+}
+
+#itens-carrinho li {
+    color: #fff;
+    font-size: 1rem;
+    margin: 5px 0;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+#total-carrinho {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#confirmacao {
+    display: none; /* Inicialmente escondido */
+    text-align: center;
+    background-color: #9d3adf;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0; /* Inicialmente invisível */
+    transform: translateY(-20px); /* Inicialmente um pouco acima */
+    animation: fadeInBounce 4s ease-out forwards;
+}
+
+/* Animação: Fade-in e efeito bounce */
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(10px); /* Desce um pouco */
+    }
+    70% {
+        transform: translateY(-5px); /* Dá um pequeno salto */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Estilo do botão de confirmar pedido */
+#confirmar-pedido-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#confirmar-pedido-btn:hover {
+    background-color: #702188;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 0.8rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Adicionando responsividade */
+@media (max-width: 768px) {
+    #form-container {
+        width: 80%;
+    }
+
+    #menu {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .cardapio-item {
+        width: 100%; /* Faz os itens do cardápio ocuparem toda a largura */
+        margin: 10px 0;
+    }
+
+    .adicionar-carrinho {
+        font-size: 0.9rem;
+    }
+
+    #carrinho {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #form-container {
+        width: 90%;
+    }
+
+    .cardapio-item {
+        width: 100%;
+        padding: 15px;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    #carrinho {
+        width: 100%;
+    }
+}

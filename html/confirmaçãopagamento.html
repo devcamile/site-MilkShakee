@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShakeFood</title>
+    <link rel="stylesheet" href="styles.css">
+    
+
+    <!-- Seção de Cardápio (inicialmente oculta) -->
+    <section id="menu" style="display: none;">
+        <h2>Cardápio</h2>
+
+        <!-- Carrinho de pedidos -->
+        <div id="carrinho">
+            <h3>Carrinho</h3>
+            <ul id="itens-carrinho"></ul>
+            <p><strong>Total:</strong> R$ <span id="total-carrinho">0.00</span></p>
+            <button type="button" id="confirmar-pedido-btn">Confirmar Pedido</button>
+        </div>
+
+        <!-- Cardápio de Milkshakes (simplificado) -->
+        <!-- ... o cardápio vai aqui ... -->
+    </section>
+
+    <!-- Confirmação do Pedido -->
+    <section id="confirmacao">
+        <p>Seu pedido foi confirmado! Aguardamos você em breve.</p>
+    </section>
+
+    <script>
+        // Simulação do processo de confirmar o pedido
+        const confirmarBtn = document.getElementById("confirmar-pedido-btn");
+        const confirmacaoSection = document.getElementById("confirmacao");
+
+        confirmarBtn.addEventListener("click", function() {
+            // Mostra a mensagem de confirmação
+            confirmacaoSection.style.display = "block";
+            // Exibe com animação
+            confirmacaoSection.style.animation = "fadeInBounce 1.5s ease-out forwards";
+
+            // Esconde o botão de confirmar pedido
+            confirmarBtn.style.display = "none";
+        });
+    </script>
+
+</body>
+</html>

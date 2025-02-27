@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShakeFood</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Formulário para coleta de dados do cliente -->
+    <div id="form-container">
+        <h2>ShakeFood</h2>
+        <form id="customer-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="celular">Número de Celular:</label>
+            <input type="tel" id="celular" name="celular" required placeholder="XXXXX-XXXX">
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+    </div>
+
+    <!-- Seção de Cardápio (inicialmente oculta) -->
+    <section id="menu" style="display: none;">
+        <h2>Cardápio</h2>
+
+        <!-- Carrinho de pedidos -->
+        <div id="carrinho">
+            <h3>Carrinho</h3>
+            <ul id="itens-carrinho"></ul>
+            <p><strong>Total:</strong> R$ <span id="total-carrinho">0.00</span></p>
+            <button type="button" id="confirmar-pedido-btn">Confirmar Pedido</button>
+        </div>
+
+        <!-- Cardápio de Milkshakes -->
+        <div class="cardapio-container">
+            <div class="cardapio-item" data-nome="Milkshake de Chocolate" data-preco="15.00">
+                <h3>Milkshake de Chocolate</h3>
+                <p>Delicioso milkshake de chocolate com cobertura de chantilly.</p>
+                <label for="chocolate-size">Escolha o tamanho:</label>
+                <select class="size-selector">
+                    <option value="pequeno">Pequeno</option>
+                    <option value="medio">Médio</option>
+                    <option value="grande">Grande</option>
+                </select>
+                <div class="adicionais">
+                    <h4>Adicionais</h4>
+                    <label><input type="checkbox" value="granulado"> Granulado</label>
+                    <label><input type="checkbox" value="chantilly-extra"> Chantilly Extra</label>
+                    <label><input type="checkbox" value="calda-caramelo"> Calda de Caramelo</label>
+                </div>
+                <button type="button" class="adicionar-carrinho">Adicionar ao Carrinho</button>
+                <h3>Milkshake de Morango</h3>
+                <p>Milkshake de morango com pedaços frescos e creme suave.</p>
+                <label for="morango-size">Escolha o tamanho:</label>
+                <select class="size-selector">
+                    <option value="pequeno">Pequeno</option>
+                    <option value="medio">Médio</option>
+                    <option value="grande">Grande</option>
+                </select>
+                <div class="adicionais">
+                    <h4>Adicionais</h4>
+                    <label><input type="checkbox" value="granulado"> Granulado</label>
+                    <label><input type="checkbox" value="chantilly-extra"> Chantilly Extra</label>
+                    <label><input type="checkbox" value="calda-caramelo"> Calda de Caramelo</label>
+                </div>
+                <button type="button" class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Milkshake de Baunilha -->
+            <div class="cardapio-item" data-nome="Milkshake de Baunilha" data-preco="16.00">
+                <img src="https://via.placeholder.com/150x200?text=Baunilha" alt="Milkshake de Baunilha">
+                <h3>Milkshake de Baunilha</h3>
+                <p>Milkshake de baunilha com sabor suave e cremoso.</p>
+                <label for="baunilha-size">Escolha o tamanho:</label>
+                <select class="size-selector">
+                    <option value="pequeno">Pequeno</option>
+                    <option value="medio">Médio</option>
+                    <option value="grande">Grande</option>
+                </select>
+                <div class="adicionais">
+                    <h4>Adicionais</h4>
+                    <label><input type="checkbox" value="granulado"> Granulado</label>
+                    <label><input type="checkbox" value="chantilly-extra"> Chantilly Extra</label>
+                    <label><input type="checkbox" value="calda-caramelo"> Calda de Caramelo</label>
+                </div>
+                <button type="button" class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            <!-- Milkshake de Ovomaltine -->
+            <div class="cardapio-item" data-nome="Milkshake de Ovomaltine" data-preco="18.00">
+                <img src="https://via.placeholder.com/150x200?text=Ovomaltine" alt="Milkshake de Ovomaltine">
+                <h3>Milkshake de Ovomaltine</h3>
+                <p>Milkshake de Ovomaltine com pedaços crocantes e creme.</p>
+                <label for="ovomaltine-size">Escolha o tamanho:</label>
+                <select class="size-selector">
+                    <option value="pequeno">Pequeno</option>
+                    <option value="medio">Médio</option>
+                    <option value="grande">Grande</option>
+                </select>
+                <div class="adicionais">
+                    <h4>Adicionais</h4>
+                    <label><input type="checkbox" value="granulado"> Granulado</label>
+                    <label><input type="checkbox" value="chantilly-extra"> Chantilly Extra</label>
+                    <label><input type="checkbox" value="calda-caramelo"> Calda de Caramelo</label>
+                </div>
+                <button type="button" class="adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+
+            </div>
+            <!-- Adicione mais itens aqui, similar ao acima -->
+        </div>
+    </section>
+
+    <!-- Confirmação do Pedido -->
+    <section id="confirmacao" style="display: none;">
+        <h2>Confirmação do Pedido</h2>
+        <p>Por favor, confirme os detalhes do seu pedido:</p>
+        <ul id="itens-carrinho-confirmacao"></ul>
+        <p><strong>Total:</strong> R$ <span id="total-carrinho-confirmacao">0.00</span></p>
+        <button type="button" id="confirmar-pagamento-btn">Ir para o Pagamento</button>
+    </section>
+
+    <!-- Pagamento -->
+    <section id="pagamento" style="display: none;">
+        <h2>Pagamento e Endereço</h2>
+        <form id="payment-form">
+            <h3>Endereço de Entrega</h3>
+
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" required>
+
+            <h3>Escolha a Forma de Pagamento</h3>
+            <select id="pagamento" name="pagamento" required>
+                <option value="">Selecione...</option>
+                <option value="cartao">Cartão de Crédito</option>
+                <option value="pix">PIX</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+
+            <button type="submit" class="btn">Confirmar Pagamento</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ShakeFood. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Passo 1: Exibe o Cardápio após o envio do formulário de cliente
+        document.getElementById('customer-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o envio tradicional do formulário
+            document.getElementById('form-container').style.display = 'none'; // Esconde o formulário
+            document.getElementById('menu').style.display = 'block'; // Exibe o cardápio
+        });
+
+        // Passo 2: Adicionar itens ao carrinho
+        let carrinho = [];
+        document.querySelectorAll('.adicionar-carrinho').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const cardapioItem = event.target.closest('.cardapio-item');
+                const nome = cardapioItem.getAttribute('data-nome');
+                const preco = parseFloat(cardapioItem.getAttribute('data-preco'));
+                const tamanho = cardapioItem.querySelector('.size-selector').value;
+                const adicionais = [];
+                
+                cardapioItem.querySelectorAll('.adicionais input:checked').forEach(input => {
+                    adicionais.push(input.value);
+                });
+
+                // Adiciona o item no carrinho
+                const precoTotal = preco; // Aqui pode ser calculado baseado nos adicionais e tamanho
+                carrinho.push({ nome, precoTotal, tamanho, adicionais });
+
+                // Atualiza o carrinho na tela
+                const carrinhoLista = document.getElementById('itens-carrinho');
+                const itemCarrinho = document.createElement('li');
+                itemCarrinho.textContent = `${nome} (${tamanho}) - R$ ${precoTotal.toFixed(2)} - Adicionais: ${adicionais.join(', ')}`;
+                carrinhoLista.appendChild(itemCarrinho);
+
+                // Atualiza o total do carrinho
+                let totalCarrinho = 0;
+                carrinho.forEach(item => totalCarrinho += item.precoTotal);
+                document.getElementById('total-carrinho').textContent = totalCarrinho.toFixed(2);
+            });
+        });
+
+        // Passo 3: Confirmar o pedido
+        document.getElementById('confirmar-pedido-btn').addEventListener('click', function() {
+            document.getElementById('menu').style.display = 'none'; // Esconde o cardápio
+            document.getElementById('confirmacao').style.display = 'block'; // Exibe a confirmação
+
+            // Atualiza a lista de itens na confirmação
+            const itensListaConfirmacao = document.getElementById('itens-carrinho-confirmacao');
+            itensListaConfirmacao.innerHTML = '';
+            carrinho.forEach(item => {
+                const itemConfirmacao = document.createElement('li');
+                itemConfirmacao.textContent = `${item.nome} (${item.tamanho}) - R$ ${item.precoTotal.toFixed(2)} - Adicionais: ${item.adicionais.join(', ')}`;
+                itensListaConfirmacao.appendChild(itemConfirmacao);
+            });
+
+            // Atualiza o total na confirmação
+            let totalConfirmacao = 0;
+            carrinho.forEach(item => totalConfirmacao += item.precoTotal);
+            document.getElementById('total-carrinho-confirmacao').textContent = totalConfirmacao.toFixed(2);
+        });
+
+        // Passo 4: Ir para a página de pagamento
+        document.getElementById('confirmar-pagamento-btn').addEventListener('click', function() {
+            document.getElementById('confirmacao').style.display = 'none'; // Esconde a confirmação
+            document.getElementById('pagamento').style.display = 'block'; // Exibe o formulário de pagamento
+        });
+
+        // Passo 5: Submeter o pagamento
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir envio do formulário
+            alert('Pagamento confirmado! Seu pedido está sendo processado.');
+            // Redireciona para uma página de sucesso ou agradecimento
+            window.location.href = 'sucesso.html'; // Exemplo de página de sucesso
+        });
+    </script>
+
+</body>
+</html>

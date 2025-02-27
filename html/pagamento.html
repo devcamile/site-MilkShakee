@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - ShakeFood</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Pagamento e Endereço</h1>
+    </header>
+
+    <div id="pagamento-container">
+        <form id="payment-form">
+            <h2>Endereço de Entrega</h2>
+
+            <!-- Endereço -->
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+
+            <label for="bairro">Bairro:</label>
+            <input type="text" id="bairro" name="bairro" required>
+
+            <h2>Escolha a Forma de Pagamento</h2>
+            <label for="pagamento">Forma de Pagamento:</label>
+            <select id="pagamento" name="pagamento" required>
+                <option value="">Selecione...</option>
+                <option value="cartao">Cartão de Crédito</option>
+                <option value="pix">PIX</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+
+            <!-- Formulário de Pagamento (Cartão de Crédito) -->
+            <div id="cartao-pagamento" style="display: none;">
+                <h2>Dados de Pagamento</h2>
+
+                <label for="cartao-numero">Número do Cartão:</label>
+                <input type="text" id="cartao-numero" name="cartao-numero" placeholder="XXXX-XXXX-XXXX-XXXX" required />
+
+                <label for="validade">Data de Validade:</label>
+                <input type="text" id="validade" name="validade" placeholder="MM/AA" required />
+
+                <label for="codigo-seguranca">Código de Segurança:</label>
+                <input type="text" id="codigo-seguranca" name="codigo-seguranca" placeholder="XXX" required />
+            </div>
+
+            <!-- Formulário de Pagamento (PIX) -->
+            <div id="pix-pagamento" style="display: none;">
+                <h2>Dados do PIX</h2>
+
+                <label for="chave-pix">Chave PIX:</label>
+                <input type="text" id="chave-pix" name="chave-pix" placeholder="Informe sua chave PIX" required />
+
+                <p><strong>Nota:</strong> O pagamento via PIX será validado após confirmação da transação.</p>
+            </div>
+
+            <!-- Formulário de Pagamento (Dinheiro) -->
+            <div id="dinheiro-pagamento" style="display: none;">
+                <h2>Pagamento em Dinheiro</h2>
+                <p>O pagamento será feito em dinheiro no momento da entrega.</p>
+            </div>
+
+            <button type="submit" class="btn">Confirmar Pagamento</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 ShakeFood. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Mostrar campos específicos com base na opção de pagamento escolhida
+        document.getElementById('pagamento').addEventListener('change', function() {
+            const pagamentoSelecionado = this.value;
+            
+            // Esconder todos os campos de pagamento
+            document.getElementById('cartao-pagamento').style.display = 'none';
+            document.getElementById('pix-pagamento').style.display = 'none';
+            document.getElementById('dinheiro-pagamento').style.display = 'none';
+
+            // Exibir o campo correspondente ao tipo de pagamento selecionado
+            if (pagamentoSelecionado === 'cartao') {
+                document.getElementById('cartao-pagamento').style.display = 'block';
+            } else if (pagamentoSelecionado === 'pix') {
+                document.getElementById('pix-pagamento').style.display = 'block';
+            } else if (pagamentoSelecionado === 'dinheiro') {
+                document.getElementById('dinheiro-pagamento').style.display = 'block';
+            }
+        });
+
+        // Manipular a submissão do formulário
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir envio do formulário por padrão
+
+            // Validar se o pagamento foi escolhido
+            const pagamentoSelecionado = document.getElementById('pagamento').value;
+            if (!pagamentoSelecionado) {
+                alert('Por favor, escolha uma forma de pagamento!');
+                return;
+            }
+
+            // Validar campos conforme o tipo de pagamento
+            if (pagamentoSelecionado === 'cartao') {
+                const cartaoNumero = document.getElementById('cartao-numero').value;
+                const validade = document.getElementById('validade').value;
+                const codigoSeguranca = document.getElementById('codigo-seguranca').value;
+
+                if (!cartaoNumero || !validade || !codigoSeguranca) {
+                    alert('Por favor, preencha todos os campos do cartão de crédito!');
+                    return;
+                }
+            }
+
+            if (pagamentoSelecionado === 'pix') {
+                const chavePix = document.getElementById('chave-pix').value;
+
+                if (!chavePix) {
+                    alert('Por favor, informe sua chave PIX!');
+                    return;
+                }
+            }
+
+            // Supondo que a transação foi realizada com sucesso
+            alert('Pagamento confirmado e pedido enviado!');
+
+            // Redirecionar para uma página de sucesso ou confirmação de pedido
+            window.location.href = 'confirmacao.html'; // Exemplo de página de confirmação
+        });
+    </script>
+
+</body>
+</html>
